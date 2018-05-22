@@ -2,12 +2,23 @@
 
 
 require_once 'connection.php';
+require_once 'model/user.php';
 
-function login($username)
+
+function login($username,$password)
 {
-    $_SESSION['time'] = time();
-    $_SESSION['type'] = 1;  // todo : query from table user
-    $_SESSION['user'] = ""; //todo : query from table user
+    $user = new user();
+    $result =  $user->getUser($username);
+    if ($result & $user->user_password == $password)
+    {
+            $_SESSION['time'] = time();
+            $_SESSION['type'] = $user->user_type;
+            $_SESSION['user'] = $user->user_name;
+            return true;
+    }
+    else
+        return false;
+
 }
 function redirect()
 {
@@ -42,11 +53,14 @@ function getLang()
     {
         $l = $_COOKIE['lang'];
         if ($l == 'fa')
-            require_once "fa-lang.php";
+            return "fa-lang.php";
         else if ($l == 'en')
-            require_once "en-lang.php";
+            return "en-lang.php";
         else
-            require_once "fa-lang.php";
+            return "fa-lang.php";
     }
+    else
+        return "fa-lang.php";
+
 }
  ?>
