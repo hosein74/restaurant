@@ -3,10 +3,11 @@ CREATE TABLE `user`
   `user_name` VARCHAR(20) NOT NULL ,
   `user_family` VARCHAR(40) NOT NULL ,
   `user_username` VARCHAR(20) NOT NULL ,
-  `user_password` VARCHAR(8) NOT NULL ,
-  `user_phone` VARCHAR(10) NOT NULL ,
+  `user_password` VARCHAR(20) NOT NULL ,
+  `user_phone` VARCHAR(11) NOT NULL ,
   `user_address` VARCHAR(100) NOT NULL ,
   `user_email` VARCHAR(100) NOT NULL ,
+  `user_type` INT(2) NOT NULL ,
   PRIMARY KEY (`user_id`),
   UNIQUE `user_username` (`user_username`));
 
