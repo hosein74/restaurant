@@ -34,6 +34,19 @@ function redirect()
 }
 function setLang($lang)
 {
-    //todo : cokies set
+    setcookie('lang',$lang) ;
+}
+function getLang()
+{
+    if (isset($_COOKIE['lang']))
+    {
+        $l = $_COOKIE['lang'];
+        if ($l == 'fa')
+            require_once "fa-lang.php";
+        else if ($l == 'en')
+            require_once "en-lang.php";
+        else
+            require_once "fa-lang.php";
+    }
 }
  ?>
