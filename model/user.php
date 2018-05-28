@@ -62,7 +62,6 @@ class user
         $sql->execute();
 
     }
-
     public function getUser($user)
     {
         $conn = DB::getInstance();

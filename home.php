@@ -5,6 +5,13 @@
  * Date: 5/14/2018
  * Time: 11:07 PM
  */
+
+require_once 'model/user.php';
+require_once 'function.php';
+require_once getLang();
+
+
+
 ?>
 <!doctype html>
 <html lang="fa">
@@ -16,12 +23,12 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="aut/register.php">ثبت نام</a>
-    <a href="aut/login.php">ورود</a>
+    <a href="aut/register.php"><?php echo $logout?></a>
+    <a href="aut/login.php"><?php echo $login?></a>
     <form name="lan" action="setLanguage.php" method="post">
         <select name="language" id="">
-            <option value="fa">فارسی</option>
-            <option value="en">english</option>
+            <option value="fa"><?php echo $fa?></option>
+            <option value="en"><?php echo $en?></option>
         </select>
     </form>
 
