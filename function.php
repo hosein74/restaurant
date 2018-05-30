@@ -3,26 +3,71 @@
 
 require_once 'connection.php';
 require_once 'model/user.php';
+session_start();
 
+function isLogin()
+{
+    if (isset($_SESSION['time']) && ( time() - $_SESSION['time']) < 3600)
+        return true;
+    else
+        return false;
 
+}
 function login($username,$password)
 {
+
     $user = new user();
     $result =  $user->getUser($username);
     if ($result & $user->user_password == $password)
     {
             $_SESSION['time'] = time();
             $_SESSION['type'] = $user->user_type;
-            $_SESSION['user'] = $user->user_name;
+            $_SESSION['user'] = $user->user_username;
             return true;
     }
     else
         return false;
 
 }
-function redirect()
+function logout()
 {
-    if (isset($_SESSION['time']) && ($_SESSION['time']- time()) < 3600 && isset($_SESSION['type']) ) {
+    $_SESSION['time'] = null;
+    $_SESSION['type'] = null;
+    $_SESSION['user'] = null;
+}
+
+function register($fname,$lname,$username,$email,$password,$password1,$address,$phone)
+{
+
+        $user = new user();
+        $result =  $user->getUser($username);
+        if (!$result && $password == $password1)
+        {
+            $newUser = new user();
+            $newUser->user_name = $fname;
+            $newUser->user_family = $lname;
+            $newUser->user_username = $username;
+            $newUser->user_password = $password;
+            $newUser->user_email = $email;
+            $newUser->user_address = $address;
+            $newUser->user_phone = $phone;
+            $newUser->user_type = 2;
+            $newUser->save();
+            $_SESSION['time'] = time();
+            $_SESSION['type'] = $newUser->user_type;
+            $_SESSION['user'] = $newUser->user_username;
+            return true;
+        }
+        else
+            return false;
+
+
+}
+
+function redirect($url)
+{
+
+    if ( isLogin() && isset($_SESSION['type']) ) {
       if ($_SESSION['type'] == 1)
       {
           header("location:admin.php");
@@ -33,14 +78,12 @@ function redirect()
       }
       else
       {
-          $_SESSION['time'] = NULL;
-          $_SESSION['type'] = NULL;
-          $_SESSION['user'] = NULL;
-          header("location:home.php");
+
+          header("location:".$url);
       }
     }
     else {
-        header("location:home.php");
+        header("location:".$url);
     }
 }
 function setLang($lang)

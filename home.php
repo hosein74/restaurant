@@ -9,10 +9,8 @@
 require_once 'model/user.php';
 require_once 'function.php';
 require_once getLang();
-
-
-
 ?>
+
 <!doctype html>
 <html lang="fa">
 <head>
@@ -22,29 +20,16 @@ require_once getLang();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-   <!-- <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css" integrity="sha384-P4uhUIGk/q1gaD/NdgkBIl3a6QywJjlsFJFk7SPRdruoGddvRVSwv5qFnvZ73cpz" crossorigin="anonymous">
+    <?php echo $link?>
+    <!--<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">-->
+    <!-- <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css" integrity="sha384-P4uhUIGk/q1gaD/NdgkBIl3a6QywJjlsFJFk7SPRdruoGddvRVSwv5qFnvZ73cpz" crossorigin="anonymous">
 -->
 </head>
 <body>
-<nav class="navbar navbar-light sticky-top bg-light">
-<div nav-item >
-    <a class="btn btn-info  " href="aut/register.php"><?php echo $logout?></a>
-    <a class="btn btn-success  " href="aut/login.php"><?php echo $login?></a>
-</div>
 
-    <form name="lan" action="setLanguage.php" method="post" class="form-inline nav-item">
-        <select class="custom-select-sm  " name="language" id="">
-                    <option value="fa"><?php echo $fa?></option>
-                    <option value="en"><?php echo $en?></option>
-                </select>
-        <input class="btn btn-warning m-1 " type="submit" name="" value="<?php echo $change?>">
-
-    </form>
-
-
-</nav>
+<?php require_once "nav.php" ?>
 
 <section>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

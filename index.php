@@ -2,6 +2,6 @@
 
 include_once 'function.php';
 
-redirect();
+redirect("home.php");
 
 ?>

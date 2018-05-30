@@ -28,7 +28,7 @@ class user
     {
         $conn = DB::getInstance();
         $sql = $conn->prepare("INSERT INTO `user` (`user_id`, `user_name`, `user_family`, `user_username`, `user_password`, `user_phone`, `user_address`, `user_email`,`user_type`) 
-                                                          VALUES (NULL,:user_name,  :user_family,  :user_username,  :user_password,  :user_phone,  :user_address,  :user_email,':user_type')");
+                                                          VALUES (NULL,:user_name,  :user_family,  :user_username,  :user_password,  :user_phone,  :user_address,  :user_email,:user_type)");
         $sql->bindParam(':user_name',$this->user_name);
         $sql->bindParam(':user_family',$this->user_family);
         $sql->bindParam(':user_username',$this->user_username);
