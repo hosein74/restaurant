@@ -11,6 +11,7 @@ class product
     public $product_id ;
     public $product_name;
     public $product_cost;
+    public $product_picture;
 
 
     function __construct()
@@ -20,19 +21,21 @@ class product
     public function save()
     {
         $conn = DB::getInstance();
-        $sql = $conn->prepare("INSERT INTO `product` (`product_id`, `product_name`, `product_cost`)
-                                        VALUES (NULL,:product_name,:product_cost)");
+        $sql = $conn->prepare("INSERT INTO `product` (`product_id`, `product_name`, `product_cost`,`product_picture`)
+                                        VALUES (NULL,:product_name,:product_cost,:product_picture)");
         $sql->bindParam(':product_name',$this->product_name);
         $sql->bindParam(':product_cost',$this->product_cost);
+        $sql->bindParam(':product_picture',$this->product_picture);
         $sql->execute();
     }
     public function update()
     {
         $conn = DB::getInstance();
-        $sql = $conn->prepare("UPDATE `product` SET `product_name`=:product_name,`product_cost`=:product_cost WHERE `product_id` = :product_id");
+        $sql = $conn->prepare("UPDATE `product` SET `product_name`=:product_name,`product_cost`=:product_cost ,`product_picture`=:product_picture WHERE `product_id` = :product_id");
         $sql->bindParam(':product_id',$this->product_id);
         $sql->bindParam(':product_name',$this->product_name);
         $sql->bindParam(':product_cost',$this->product_cost);
+        $sql->bindParam(':product_picture',$this->product_picture);
         $sql->execute();
     }
     public function delete()
@@ -58,6 +61,7 @@ class product
             $this->product_id = $thisUser['product_id'];
             $this->product_name = $thisUser['product_name'];
             $this->product_cost = $thisUser['product_cost'];
+            $this->product_picture = $thisUser['product_picture'];
             return true;
         }
         else
@@ -66,9 +70,28 @@ class product
             $this->product_id = null;
             $this->product_name = null;
             $this->product_cost = null;
+            $this->product_picture = null;
             return false;
         }
 
     }
-
+    public static function getProducts($start,$count)
+    {
+        $conn = DB::getInstance();
+        $sql = $conn->query("select * from `product` LIMIT ".$count." OFFSET ".$start);
+        $sql->execute();
+        $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $ac = $sql->fetchAll();
+        return $ac;
+    }
+    public static function getAllCount()
+    {
+        $conn = DB::getInstance();
+        $sql = $conn->prepare("SELECT COUNT(product_id) AS NumberOfProducts FROM product;");
+        $sql->execute();
+        $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $ac = $sql->fetchAll();
+        $count = $ac[0]['NumberOfProducts'];
+        return $count;
+    }
 };

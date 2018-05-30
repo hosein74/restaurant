@@ -25,6 +25,7 @@ CREATE TABLE `product`
 ( `product_id` INT(6) AUTO_INCREMENT NOT NULL ,
   `product_name` VARCHAR(20) NOT NULL ,
   `product_cost` INT(10) NOT NULL ,
+  `product_picture` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`product_id`));
 
 

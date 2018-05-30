@@ -25,4 +25,5 @@ $phone = "phone";
 $address= "address";
 $userinf = "user information";
 $locationinf = "location information";
-
+$plus = "add to buy card";
+$pop = "delete from buy card ";
