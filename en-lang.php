@@ -27,3 +27,15 @@ $userinf = "user information";
 $locationinf = "location information";
 $plus = "add to buy card";
 $pop = "delete from buy card ";
+$card = "card";
+$number = "number";
+$food = "food";
+$count = "count";
+$price = "price";
+$direction = "";
+$listproducts = "foods";
+$requests = "requests";
+$cost = "final cost";
+$regReq = "register request";
+
+

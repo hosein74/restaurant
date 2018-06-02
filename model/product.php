@@ -49,7 +49,7 @@ class product
     public function getProduct($product)
     {
         $conn = DB::getInstance();
-        $sql = $conn->prepare("select * from `product` WHERE `product_id`=:product_id");
+        $sql = $conn->prepare("select * from `product` WHERE product_id =:product_id");
         $sql->bindParam(':product_id',$product);
         $sql->execute();
         $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -66,14 +66,12 @@ class product
         }
         else
         {
-
             $this->product_id = null;
             $this->product_name = null;
             $this->product_cost = null;
             $this->product_picture = null;
             return false;
         }
-
     }
     public static function getProducts($start,$count)
     {

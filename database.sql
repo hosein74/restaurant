@@ -16,6 +16,7 @@ CREATE TABLE `request`
   `request_date` DATE NOT NULL ,
   `request_address` VARCHAR(100) NOT NULL ,
   `user_id` INT(6) NOT NULL ,
+  `request_type` int(5) NOT NULL ,
   PRIMARY KEY (`request_id`),
   FOREIGN KEY(user_id) references user(user_id)
     ON DELETE CASCADE

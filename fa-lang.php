@@ -27,4 +27,14 @@ $userinf = "مشخصات کاربری";
 $locationinf = "مشخصات ارتباطی";
 $plus = "اضافه به سبد خرید";
 $pop = "حذف از سبد خرید";
+$card = "سبد خرید";
+$number = "شماره";
+$food = "غذا";
+$count = "تعداد";
+$price = "قیمت";
+$direction = "style=\"direction: rtl;text-align:right\"";
+$listproducts = "محصولات";
+$requests = "سفارشات";
+$cost = "هزینه کل";
+$regReq = "ثبت سفارش";
 

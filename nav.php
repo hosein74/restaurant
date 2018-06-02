@@ -6,8 +6,9 @@
  * Time: 12:46 PM
  */
 
-
+require_once 'function.php';
 ?>
+
 
 <nav class="navbar navbar-light sticky-top bg-light">
 
@@ -24,12 +25,22 @@
     <div nav-item >
         <a class="btn btn-info  " href="register.php"><?php echo $logout?></a>
         <a class="btn btn-success  " href="login.php"><?php echo $login?></a>
+
     </div>
+
     <?php }else{ ?>
-    <div nav-item >
-        <p class="text-dark d-inline-block  " ><?php echo $_SESSION['user']?></p>
-        <a class="btn btn-success  " href="logout.php"><?php echo $exit?></a>
-    </div>
+
+        <?php if (isset($_SESSION['type']) && $_SESSION['type'] == 2){ ?>
+            <div nav-item >
+                <a  class="btn btn-info" href="request.php"><?php echo $requests?></a>
+                <a  class="btn btn-success" href="card.php"><?php echo $card?></a>
+                <a  class="btn btn-info" href="user.php"><?php echo $listproducts?></a>
+            </div>
+        <?php } ?>
+        <div nav-item >
+            <p class="text-dark d-inline-block  " ><?php echo $_SESSION['user']?></p>
+            <a class="btn btn-danger  " href="logout.php"><?php echo $exit?></a>
+        </div>
     <?php } ?>
 
 </nav>

@@ -106,4 +106,16 @@ function getLang()
         return "fa-lang.php";
 
 }
+
+function setRequest($card)
+{
+    $thisUser = new user();
+    $thisUser->getUser($_SESSION['user']);
+    $newReq = new request();
+    $newReq->request_date = time();
+    $newReq->request_address = $thisUser->user_address;
+    $newReq->user_id = $thisUser->user_id;
+    $newReq->request_type = 1;
+
+}
  ?>

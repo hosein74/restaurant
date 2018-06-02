@@ -149,18 +149,6 @@ function getProduct(p,c) {
                     "        </div>")
             })
             updateText();
-            $(document).on('click','.plus', function(){
-                id = $(this).next().text();
-                plus(id);
-                $(this).removeClass('plus').addClass('pop');
-                $(this).text("<?php echo $pop?>");
-            });
-            $(document).on('click','.pop', function(){
-                id = $(this).next().text();
-                pop(id);
-                $(this).removeClass('pop').addClass('plus');
-                $(this).text("<?php echo $plus?>");
-            });
         })
         .fail(function (xhr, status, errorThrown) {
             alert( "Sorry, there was a problem!" );
@@ -171,6 +159,18 @@ function getProduct(p,c) {
 
 }
    $(document).ready(function () {
+       $(document).on('click','.plus', function(){
+           id = $(this).next().text();
+           plus(id);
+           $(this).removeClass('plus').addClass('pop');
+           $(this).text("<?php echo $pop?>");
+       });
+       $(document).on('click','.pop', function(){
+           id = $(this).next().text();
+           pop(id);
+           $(this).removeClass('pop').addClass('plus');
+           $(this).text("<?php echo $plus?>");
+       });
        getProduct(1,6);
    });
 </script>
