@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $title = "restaurant";
 $username = "username";
 $password = "password";
@@ -8,7 +8,7 @@ $email = "email";
 $logout = "register";
 $login = "login";
 $exit = "logout";
-$fa = "persian";
+$fa = "فارسی";
 $en = "english";
 $change = "change";
 $deser = "deser";
