@@ -3,6 +3,7 @@
 
 require_once 'connection.php';
 require_once 'model/user.php';
+require_once 'model/listrequest.php';
 session_start();
 
 function isLogin()
@@ -112,10 +113,20 @@ function setRequest($card)
     $thisUser = new user();
     $thisUser->getUser($_SESSION['user']);
     $newReq = new request();
-    $newReq->request_date = time();
+    $newReq->request_date = date('Y-m-d H:i:s');
     $newReq->request_address = $thisUser->user_address;
     $newReq->user_id = $thisUser->user_id;
     $newReq->request_type = 1;
+    $newReq->save();
 
+    $l = new listrequest();
+    foreach ($card as $p_id => $p_num)
+    {
+        $l->request_id = $newReq->request_id;
+        $l->product_id = (int)$p_id;
+        $l->listrequest_num = (int)$p_num;
+        $l->save();
+    }
 }
+
  ?>

@@ -8,12 +8,16 @@
 
 require_once 'function.php';
 require_once 'model/request.php';
-if (isset($_POST) )
-{
-    foreach ($_POST['count'] as $key => $value)
-        echo $key." => ".$value;
-}
+require_once getLang();
 
-;
-//redirect("login.php");
+if (isset($_POST['count']) )
+{
+    setRequest($_POST['count']);
+    setcookie("card", "", time() - 3600);
+    header("location:request.php")
+    ?>
+<?php
+}
+else
+redirect("login.php");
 

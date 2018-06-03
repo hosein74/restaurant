@@ -6,6 +6,9 @@
  * Time: 10:02 PM
  */
 
+require_once './connection.php';
+
+
 class request
 {
     public $request_id;
@@ -21,24 +24,27 @@ class request
     public function save()
     {
         $conn = DB::getInstance();
-        $sql = $conn->prepare("INSERT INTO `request` (`request_id`, `request_date`, `request_address`, `user_id`.`request_type`) 
-                                        VALUES (NULL,:request_date,:request_address,:user_id,:request_type)");
+        $sql = $conn->prepare("INSERT INTO `request` (`request_id`, `request_date`, `request_address`, `user_id`,`request_type`) 
+                                        VALUES (NULL,:request_date,:request_address,:user_id,:request_type);SELECT LAST_INSERT_ID();");
         $sql->bindParam(':request_date',$this->request_date);
         $sql->bindParam(':request_address',$this->request_address);
         $sql->bindParam(':user_id',$this->user_id);
         $sql->bindParam(':request_type',$this->request_type);
         $sql->execute();
+        $id = $conn->lastInsertId();
+        $this->request_id = $id;
     }
     public function update()
     {
         $conn = DB::getInstance();
-        $sql = $conn->prepare("UPDATE `request` SET `request_date`=:request_date,`request_address`=:request_address,`user_id`=:request_id,`request_type`=:request_type WHERE `request_id`=:request_id");
+        $sql = $conn->prepare("UPDATE `request` SET `request_date`=:request_date,`request_address`=:request_address,`user_id`=:user_id,`request_type`=:request_type WHERE `request_id`=:request_id");
         $sql->bindParam(':request_id',$this->request_id);
         $sql->bindParam(':request_date',$this->request_date);
         $sql->bindParam(':request_address',$this->request_address);
         $sql->bindParam(':user_id',$this->user_id);
         $sql->bindParam(':request_type',$this->request_type);
         $sql->execute();
+
     }
     public function delete()
     {
@@ -65,7 +71,6 @@ class request
             $this->request_address = $thisUser['request_address'];
             $this->user_id = $thisUser['user_id'];
             $this->request_type = $thisUser['request_type'];
-
             return true;
         }
         else
@@ -80,6 +85,14 @@ class request
         }
 
     }
-
+    public static function getAllRequests()
+    {
+        $conn = DB::getInstance();
+        $sql = $conn->query("select * from `request`");
+        $sql->execute();
+        $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $ac = $sql->fetchAll();
+        return $ac;
+    }
 }
 

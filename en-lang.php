@@ -37,5 +37,14 @@ $listproducts = "foods";
 $requests = "requests";
 $cost = "final cost";
 $regReq = "register request";
+$req_code = "request code";
+$status = "status";
+$pay = "pay";
+$date = "date";
+$inpay = "waiting for pay";
+$insubmit = "waiting for submit";
+$submit = "sended";
+$payed = "payed";
+
 
 

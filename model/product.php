@@ -6,6 +6,9 @@
  * Time: 10:02 PM
  */
 
+require_once './connection.php';
+
+
 class product
 {
     public $product_id ;
@@ -27,6 +30,8 @@ class product
         $sql->bindParam(':product_cost',$this->product_cost);
         $sql->bindParam(':product_picture',$this->product_picture);
         $sql->execute();
+        $id = $conn->lastInsertId();
+        $this->product_id = $id;
     }
     public function update()
     {

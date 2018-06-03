@@ -33,18 +33,15 @@ if (isLogin() && $_SESSION['type'] == 2)
         <form action="mcard.php" method="post">
             <table class="table table-striped" <?php echo " ".$direction?> >
                 <thead>
-                <tr>
+                <tr class="bg-warning">
                     <th scope="col"><?php echo $number?></th>
                     <th scope="col"><?php echo $food?></th>
                     <th scope="col"><?php echo $price?></th>
                     <th scope="col"><?php echo $count?></th>
                     <th scope="col"><?php echo $cost?></th>
-
                 </tr>
                 </thead>
                 <tbody id="pCard">
-
-
                 </tbody>
             </table>
             <div class="form-group d-flex justify-content-center ">
@@ -92,7 +89,7 @@ else {
                 sum = 0;
                 $.each(json,function (key,val) {
                     $('#pCard').append("<tr id='"+val['product_id']+"'>\n" +
-                        "            <th scope=\"row\" class=\"number\">"+key+"</th>\n" +
+                        "            <th scope=\"row\" class=\"number\">"+(key+1)+"</th>\n" +
                         "            <td class=\"food\">"+val['product_name']+"</td>\n" +
                         "            <td class=\"price\">"+val['product_cost']+"</td>\n" +
                         "            <td class=\"+val['product_id']+\"' >\n" +
@@ -102,13 +99,13 @@ else {
                         "        </tr>")
                     sum = sum + parseInt(val['product_cost']);
                 })
-                $('#pCard').append("<tr >\n" +
+                $('#pCard').append("<tr class='table-warning' >\n" +
                     "            <th scope=\"row\" ></th>\n" +
                     "            <td ></td>\n" +
                     "            <td ></td>\n" +
                     "            <td >\n" +
                     "            </td>\n" +
-                    "            <td class=\"fcost\">"+sum+"</td>\n" +
+                    "            <td class=\"fcost \">"+sum+"</td>\n" +
                     "        </tr>")
 
             })
@@ -125,7 +122,7 @@ else {
                 url: "ajax-product.php",
                 data: {page:p,count:c},
                 type: "GET",
-                dataType: "json",
+                dataType: "json"
             })
             .done(function (json) {
                 count = parseInt(json['allCount']);

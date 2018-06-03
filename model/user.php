@@ -38,6 +38,8 @@ class user
         $sql->bindParam(':user_email',$this->user_email);
         $sql->bindParam(':user_type',$this->user_type);
         $sql->execute();
+        $id = $conn->lastInsertId();
+        $this->user_id = $id;
 
     }
     public function update()
