@@ -36,7 +36,15 @@ require_once 'function.php';
                 <a  class="btn btn-success" href="card.php"><?php echo $card?></a>
                 <a  class="btn btn-info" href="user.php"><?php echo $listproducts?></a>
             </div>
-        <?php } ?>
+        <?php }else if(isset($_SESSION['type']) && $_SESSION['type'] == 1){?>
+	
+			<div nav-item >
+                <a  class="btn btn-success" href="registerfood.php"><?php echo $registerfood?></a>
+                <a  class="btn btn-info" href="user.php"><?php echo $listproducts?></a>
+            </div>
+	
+		<?php
+		} ?>
         <div nav-item >
             <p class="text-dark d-inline-block  " ><?php echo $_SESSION['user']?></p>
             <a class="btn btn-danger  " href="logout.php"><?php echo $exit?></a>
