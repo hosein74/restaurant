@@ -37,4 +37,9 @@ $listproducts = "محصولات";
 $requests = "سفارشات";
 $cost = "هزینه کل";
 $regReq = "ثبت سفارش";
-
+$registerfood="ثبت غذا";
+$food="مشخصات غذا";
+$foodname="نام غذا";
+$foodcost="قیمت غذا";
+$picture="تصویر";
+$registerbtn="ثبت";

@@ -37,5 +37,9 @@ $listproducts = "foods";
 $requests = "requests";
 $cost = "final cost";
 $regReq = "register request";
-
-
+$registerfood="register food";
+$food="food information";
+$foodname="food name";
+$foodcost="food cost";
+$picture="picture";
+$registerbtn="register";
