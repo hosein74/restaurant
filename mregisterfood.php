@@ -5,6 +5,7 @@
  * Date: 6/2/2018
  * Time: 6:39 PM
  */
+//salam
 
 require_once 'function.php';
 $targetdir="pics/";
