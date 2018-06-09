@@ -14,7 +14,7 @@ require_once getLang();
 if (isLogin() && $_SESSION['type'] == 1)
 {
     ?>
-<!doctype html>
+    <!doctype html>
     <html lang=fa>
     <head>
         <meta charset="UTF-8">
@@ -32,34 +32,34 @@ if (isLogin() && $_SESSION['type'] == 1)
 
 
     <section class=" row justify-content-center">
-        <form action="mregisterfood.php" method="post">
-        <div class="card m-5"  style="width: 700px">
-            <div class="card-header">
-                <?php echo $food?>
-            </div>
-            <div class="card-body">
+        <form action="mregisterfood.php" method="post" enctype="multipart/form-data">
+            <div class="card m-5"  style="width: 700px">
+                <div class="card-header">
+                    <?php echo $food?>
+                </div>
+                <div class="card-body">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="foodname"><?php echo $foodname?></label>
                             <input name="foodname" type="text" class="form-control" id="foodname" aria-describedby="emailHelp" placeholder="<?php echo $foodname?>">
                         </div>
-						<div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="foodcost"><?php echo $foodcost?></label>
                             <input name="foodcost" type="text" class="form-control" id="foodcost" aria-describedby="emailHelp" placeholder="<?php echo $foodcost?>">
                         </div>
-						<div class="form-group col-md-6">
-                         <label for="picture"><?php echo $picture?></label>
-    						<input type="file" name="picture" id="picture">
-                    	</div>
+                        <div class="form-group col-md-6">
+                            <label for="picture"><?php echo $picture?></label>
+                            <input type="file" name="picture" id="picture">
+                        </div>
                     </div>
-            </div>
-            
+                </div>
+
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary"><?php echo $registerbtn?></button>
-				</div>
+                </div>
 
-        </div>
+            </div>
         </form>
 
     </section>
@@ -68,7 +68,7 @@ if (isLogin() && $_SESSION['type'] == 1)
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
- <?php
+    <?php
 }
 else {
 

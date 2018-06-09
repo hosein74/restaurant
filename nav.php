@@ -22,11 +22,11 @@ require_once 'function.php';
 
     </form>
     <?php if (!isLogin()){ ?>
-    <div nav-item >
-        <a class="btn btn-info  " href="register.php"><?php echo $logout?></a>
-        <a class="btn btn-success  " href="login.php"><?php echo $login?></a>
+        <div nav-item >
+            <a class="btn btn-info  " href="register.php"><?php echo $logout?></a>
+            <a class="btn btn-success  " href="login.php"><?php echo $login?></a>
 
-    </div>
+        </div>
 
     <?php }else{ ?>
 
@@ -37,14 +37,15 @@ require_once 'function.php';
                 <a  class="btn btn-info" href="user.php"><?php echo $listproducts?></a>
             </div>
         <?php }else if(isset($_SESSION['type']) && $_SESSION['type'] == 1){?>
-	
-			<div nav-item >
+
+            <div nav-item >
+                <a  class="btn btn-info" href="request.php"><?php echo $support?></a>
                 <a  class="btn btn-success" href="registerfood.php"><?php echo $registerfood?></a>
-                <a  class="btn btn-info" href="user.php"><?php echo $listproducts?></a>
+                <a  class="btn btn-info" href="admin.php"><?php echo $listproducts?></a>
             </div>
-	
-		<?php
-		} ?>
+
+            <?php
+        } ?>
         <div nav-item >
             <p class="text-dark d-inline-block  " ><?php echo $_SESSION['user']?></p>
             <a class="btn btn-danger  " href="logout.php"><?php echo $exit?></a>

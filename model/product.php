@@ -97,4 +97,36 @@ class product
         $count = $ac[0]['NumberOfProducts'];
         return $count;
     }
+
+    public function getProductname($productname)
+    {
+        $conn = DB::getInstance();
+        $sql = $conn->prepare("select * from `product` WHERE product_name =:product_name");
+        $sql->bindParam(':product_name',$productname);
+        $sql->execute();
+        //$result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $ac = $sql->fetchAll();
+        $numOfRow=$sql->rowCount();
+        $thisUser = $ac[1];
+        if ($numOfRow == 1)
+        {
+            $this->product_id = $thisUser['product_id'];
+            $this->product_name = $thisUser['product_name'];
+            $this->product_cost = $thisUser['product_cost'];
+            $this->product_picture = $thisUser['product_picture'];
+            return true;
+        }
+        else
+        {
+            $this->product_id = null;
+            $this->product_name = null;
+            $this->product_cost = null;
+            $this->product_picture = null;
+            return false;
+        }
+    }
+
+
 };
+
+

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿<?php
 $title = "restaurant";
 $username = "username";
@@ -46,53 +46,12 @@ $inpay = "waiting for pay";
 $insubmit = "waiting for submit";
 $submit = "sended";
 $payed = "payed";
-
-
-
-=======
-﻿<?php
-$title = "restaurant";
-$username = "username";
-$password = "password";
-$password1 = "retype password";
-$enter = "login";
-$email = "email";
-$logout = "register";
-$login = "login";
-$exit = "logout";
-$fa = "فارسی";
-$en = "english";
-$change = "change";
-$deser = "deser";
-$deser_des = "Strawberry deser ...";
-$fish = "fish";
-$fish_des = "gezel ala fish ...";
-$jooje = "jooje";
-$jooje_des = "special jooje ...";
-$link = "<link rel=\"stylesheet\" href=\"node_modules/bootstrap/dist/css/bootstrap.min.css\">";
-$personal = "personal information";
-$fname = "first name";
-$lname = "last naame";
-$phone = "phone";
-$address= "address";
-$userinf = "user information";
-$locationinf = "location information";
-$plus = "add to buy card";
-$pop = "delete from buy card ";
-$card = "card";
-$number = "number";
-$food = "food";
-$count = "count";
-$price = "price";
-$direction = "";
-$listproducts = "foods";
-$requests = "requests";
-$cost = "final cost";
-$regReq = "register request";
 $registerfood="register food";
 $food="food information";
 $foodname="food name";
 $foodcost="food cost";
 $picture="picture";
 $registerbtn="register";
->>>>>>> 56f0ff264fa55cc03c6c0f988dd7870db07a637b
+$support="support";
+$editfood="edit";
+$deletefood="delete";

@@ -129,4 +129,25 @@ function setRequest($card)
     }
 }
 
+
+function registerfood($foodname,$foodcost,$picture)
+{
+
+    $product = new product();
+    $result =  $product->getProductname($foodname);
+    if (!$result)
+    {
+        $newproduct = new product();
+        $newproduct->product_name = $foodname;
+        $newproduct->product_cost = $foodcost;
+        $newproduct->product_picture = $picture;
+        $newproduct->save();
+        return true;
+    }
+    else
+        return false;
+
+
+}
+
  ?>
