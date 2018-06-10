@@ -174,7 +174,7 @@ else {
                 "\n"
                 )
         });
-        $(document).on('submit','editform',function (e) {
+        $(document).on('submit','#editform',function (e) {
             e.preventDefault();
             $.ajax({
                 url: "ajax-editproduct.php",
@@ -183,9 +183,10 @@ else {
                 contentType: false,
                 cache: false,
                 processData:false,
-                success: function(data)
+                dataType: "json",
+                success: function(json)
                 {
-
+							
                 }
             });
         });

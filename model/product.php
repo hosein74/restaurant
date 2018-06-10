@@ -119,18 +119,17 @@ class product
     }
 	
 	public function getaddresspic($id){
-		/*$conn = DB::getInstance();
-		$sql = $conn->prepare("select product_picture from `product` WHERE product_id =:product_id");
+		$conn = DB::getInstance();
+		$sql = $conn->prepare("select * from `product` WHERE product_id =:product_id");
         $sql->bindParam(':product_id',$id);
         $sql->execute();
 		$ac=$sql->fetchAll();
-		$result=$ac[0];
+		$result=$ac[0]['product_picture'];
 		if($result)
 			return $result;
 		else
-			return false;*/
-		$file="pics/gorme.jpg";
-		return $file;
+			return false;
+		
 		
 	}
 
