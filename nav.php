@@ -40,7 +40,8 @@ require_once 'function.php';
 
             <div nav-item >
                 <a  class="btn btn-info" href="request.php"><?php echo $support?></a>
-                <a  class="btn btn-success" href="registerfood.php"><?php echo $registerfood?></a>
+                <a  class="btn btn-info" href="registerfood.php"><?php echo $registerfood?></a>
+                <a  class="btn btn-success" href="verifyRequest.php"><?php echo $verify?></a>
                 <a  class="btn btn-info" href="admin.php"><?php echo $listproducts?></a>
             </div>
 

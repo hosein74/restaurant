@@ -21,3 +21,12 @@ if ($_GET['type'] == "payed")
     $req->update();
     echo json_encode($req->request_id);
 }
+elseif ($_GET['type'] == "verify")
+{
+    $id = $_GET['id'];
+    $req = new request();
+    $req->getRequest($id);
+    $req->request_type = 3;
+    $req->update();
+    echo json_encode($req->request_id);
+}
