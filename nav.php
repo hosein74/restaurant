@@ -47,7 +47,7 @@ require_once 'function.php';
             <?php
         } ?>
         <div nav-item >
-            <p class="text-dark d-inline-block  " ><?php echo $_SESSION['user']?></p>
+            <a href="editUser.php" class="text-dark d-inline-block btn bg-white border-success" ><?php echo $_SESSION['user']?></a>
             <a class="btn btn-danger  " href="logout.php"><?php echo $exit?></a>
         </div>
     <?php } ?>

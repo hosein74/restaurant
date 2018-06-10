@@ -55,6 +55,7 @@ class user
         $sql->bindParam(':user_email',$this->user_email);
         $sql->bindParam(':user_type',$this->user_type);
         $sql->execute();
+
     }
     public function delete()
     {

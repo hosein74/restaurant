@@ -95,7 +95,7 @@ else{
             </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary"><?php echo $login?></button>
+                    <button type="submit" class="btn btn-primary"><?php echo $logout?></button>
                 </div>
             </div>
 
