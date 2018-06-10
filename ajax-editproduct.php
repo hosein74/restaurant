@@ -1,28 +1,15 @@
 <?php
 require_once 'function.php';
 require_once 'model/product.php';
-print_r($_POST);
-echo "<br/>";
 
-echo "<br/>";
-print_r($_FILES);
-echo "<br/>";
+$id=$_POST['id'];
+$newnamefood=$_POST['foodname'];
+$newcostfood=$_POST['foodcost'];
+$newpicture=$_FILES['picture'];
 
-echo "<br/>";
-//echo $_POST['foodname'];
-if($_POST['foodname']){
-	
-	echo $_POST['foodname'];
-	
-}else if($_POST['foodcost']){
-	
-	echo $_POST['foodcost'];
-	
-}else if($_FILES['picture']){
-	
-	echo $_FILES['picture'];
-	
-}
+$product=new product();
+$product=updatefood($id,$newnamefood,$newcostfood,$newpicture);
 
+$data = array('id' => $product->product_id,'foodname' => $product->product_name,'costname' =>$product->product_cost,'targetfile' => $product->product_picture);
+echo json_encode($data);
 
-	

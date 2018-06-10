@@ -15,12 +15,22 @@ class product
     public $product_name;
     public $product_cost;
     public $product_picture;
+	
+	/*public function __construct($id,$nfood,$cfood,$pic){
+		
+		$this->$product_id=$id;
+		$this->$product_name=$nfood;
+		$this->$product_cost=$cfood;
+		$this->$product_picture=$pic;
+		
+	}*/
 
 
-    function __construct()
+    public function __construct()
     {
 
     }
+	
     public function save()
     {
         $conn = DB::getInstance();

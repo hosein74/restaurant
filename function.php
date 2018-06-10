@@ -199,4 +199,61 @@ function deletefood($id){
 	}
 }
 
+function updatefood($id,$newnamefood,$newcostfood,$newpicture){
+	
+	$targetdir = "pics/";
+	$pict=$newpicture['name'];
+	$targetfile=$targetdir.$pict;
+
+	$oldproduct=new product();
+	$oldproduct->getProduct($id);
+
+	$product=new product();
+	$product->product_id=$id;
+
+	if($newnamefood)
+	{
+		$product->product_name=$newnamefood;
+	}else{
+		$product->product_name=$oldproduct->product_name;
+	}
+
+	if($newcostfood){
+		$product->product_cost=$newcostfood;
+	}else{
+		$product->product_cost=$oldproduct->product_cost;
+	}
+
+	if($newpicture['error']==0){
+	
+		$product->product_picture=$targetfile;
+		$formet=pathinfo($product->product_picture,PATHINFO_EXTENSION);
+		if($formet=='jpg'){
+			unlink($oldproduct->product_picture);
+			$product->update();
+			if(file_exists($targetfile)){
+				echo "file exist";
+			}else{
+		
+				if(move_uploaded_file($newpicture['tmp_name'],$product->product_picture)){
+					echo "uploaad ok";
+				}
+			}
+		}else{
+			$product->product_picture=$oldproduct->product_picture;
+			$product->update();
+		}
+	
+	}else{
+		$product->product_picture=$oldproduct->product_picture;
+		$product->update();
+	}
+	
+	
+	return $product;
+	
+}
+
+
+
  ?>
