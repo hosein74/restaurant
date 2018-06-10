@@ -66,6 +66,30 @@ function register($fname,$lname,$username,$email,$password,$password1,$address,$
 
 }
 
+function editUser($fname,$lname,$username,$email,$password,$password1,$address,$phone)
+{
+
+    $user = new user();
+    $result =  $user->getUser($_SESSION['user']);
+    if ($result && $password == $password1)
+    {
+        $newUser = new user();
+        $newUser->user_name = $fname;
+        $newUser->user_family = $lname;
+        $newUser->user_username = $_SESSION['user'];
+        $newUser->user_password = $password;
+        $newUser->user_email = $email;
+        $newUser->user_address = $address;
+        $newUser->user_phone = $phone;
+        $newUser->user_type = 2;
+        $newUser->update();
+        return true;
+    }
+    else
+        return false;
+}
+
+
 function redirect($url)
 {
 

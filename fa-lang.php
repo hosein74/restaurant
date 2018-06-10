@@ -55,3 +55,6 @@ $registerbtn="ثبت";
 $support="پشتیبانی";
 $editfood="ویرایش";
 $deletefood="حذف";
+$verify = "تایید سفارش";
+$verified = "تایید";
+$send = "ارسال";

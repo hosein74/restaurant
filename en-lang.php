@@ -55,3 +55,6 @@ $registerbtn="register";
 $support="support";
 $editfood="edit";
 $deletefood="delete";
+$verify = "verify request";
+$verified = "verified";
+$send = "send";

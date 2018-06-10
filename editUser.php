@@ -9,6 +9,7 @@
 
 
 require_once 'function.php';
+require_once 'model/user.php';
 require_once getLang();
 
 if (!isLogin())
@@ -17,6 +18,8 @@ if (!isLogin())
 }
 else{
 
+    $thisUser = new user();
+    $thisUser->getUser($_SESSION['user']);
     ?>
 
     <!doctype html>
@@ -34,7 +37,7 @@ else{
     <body style="background-image: url(pics/pizza.jpg); background-repeat: no-repeat;background-size: cover">
     <?php require_once "nav.php" ?>
     <section class=" row justify-content-center">
-        <form action="mregister.php" method="post">
+        <form action="mEditUser.php" method="post">
         <div class="card m-5"  style="width: 700px">
             <div class="card-header">
                 <?php echo $personal?>
@@ -43,11 +46,11 @@ else{
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="lname"><?php echo $lname?></label>
-                            <input name="lname" type="text" class="form-control" id="lname" placeholder="<?php echo $lname?>">
+                            <input name="lname" value="<?php echo $thisUser->user_family?>" type="text" class="form-control" id="lname" placeholder="<?php echo $lname?>">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="fname"><?php echo $fname?></label>
-                            <input name="fname" type="text" class="form-control" id="fname" aria-describedby="emailHelp" placeholder="<?php echo $fname?>">
+                            <input name="fname" value="<?php echo $thisUser->user_name?>" type="text" class="form-control" id="fname" aria-describedby="emailHelp" placeholder="<?php echo $fname?>">
                         </div>
                     </div>
             </div>
@@ -58,17 +61,17 @@ else{
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="email"><?php echo $email?></label>
-                        <input name="email" type="text" class="form-control" id="email" placeholder="<?php echo $email?>">
+                        <input name="email" value="<?php echo $thisUser->user_email?>" type="text" class="form-control" id="email" placeholder="<?php echo $email?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="username"><?php echo $username?></label>
-                        <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="<?php echo $username?>">
+                        <input name="username" value="<?php echo $thisUser->user_username?>" readonly type="text"  class="form-control disabled" id="username" aria-describedby="emailHelp" placeholder="<?php echo $username?>">
                     </div>
                 </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="password1"><?php echo $password1?></label>
-                    <input name="password1" type="password" class="form-control" id="password1" placeholder="<?php echo $password1?>">
+                    <input name="password1"  type="password" class="form-control" id="password1" placeholder="<?php echo $password1?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password"><?php echo $password?></label>
@@ -83,16 +86,16 @@ else{
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="phone"><?php echo $phone?></label>
-                    <input name="phone" type="text" class="form-control" id="email" placeholder="<?php echo $phone?>">
+                    <input name="phone" value="<?php echo $thisUser->user_phone?>" type="text" class="form-control" id="email" placeholder="<?php echo $phone?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="address"><?php echo $address?></label>
-                    <input name="address" type="text" class="form-control" id="address"  placeholder="<?php echo $address?>">
+                    <input name="address" value="<?php echo $thisUser->user_address?>" type="text" class="form-control" id="address"  placeholder="<?php echo $address?>">
                 </div>
             </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary"><?php echo $login?></button>
+                    <button type="submit" class="btn btn-primary"><?php echo $editfood?></button>
                 </div>
             </div>
 

@@ -40,14 +40,15 @@ require_once 'function.php';
 
             <div nav-item >
                 <a  class="btn btn-info" href="request.php"><?php echo $support?></a>
-                <a  class="btn btn-success" href="registerfood.php"><?php echo $registerfood?></a>
+                <a  class="btn btn-info" href="registerfood.php"><?php echo $registerfood?></a>
+                <a  class="btn btn-success" href="verifyRequest.php"><?php echo $verify?></a>
                 <a  class="btn btn-info" href="admin.php"><?php echo $listproducts?></a>
             </div>
 
             <?php
         } ?>
         <div nav-item >
-            <p class="text-dark d-inline-block  " ><?php echo $_SESSION['user']?></p>
+            <a href="editUser.php" class="text-dark d-inline-block btn bg-white border-success" ><?php echo $_SESSION['user']?></a>
             <a class="btn btn-danger  " href="logout.php"><?php echo $exit?></a>
         </div>
     <?php } ?>
