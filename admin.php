@@ -104,7 +104,7 @@ else {
 		})
 		
 		.done(function(){
-		//	alert(id);
+			alert(id);
 			
 			
 			

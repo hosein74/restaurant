@@ -14,4 +14,4 @@ if (isset($_POST) && !empty($_POST['foodname'])  && !empty($_POST['foodcost']) &
 {
     $_SESSION['registerfoodError']=registerfood($_POST['foodname'],$_POST['foodcost'],$_FILES['picture']);
 }
-//redirect("registerfood.php");
+redirect("registerfood.php");

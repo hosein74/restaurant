@@ -117,6 +117,22 @@ class product
             return false;
         }
     }
+	
+	public function getaddresspic($id){
+		/*$conn = DB::getInstance();
+		$sql = $conn->prepare("select product_picture from `product` WHERE product_id =:product_id");
+        $sql->bindParam(':product_id',$id);
+        $sql->execute();
+		$ac=$sql->fetchAll();
+		$result=$ac[0];
+		if($result)
+			return $result;
+		else
+			return false;*/
+		$file="pics/gorme.jpg";
+		return $file;
+		
+	}
 
 
 };
