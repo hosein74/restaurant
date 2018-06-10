@@ -74,7 +74,7 @@ else {
                 })
                 $("#products").empty()
                 $.each(json['product'],function (key,value) {
-                    $("#products").append("<div class=\"card \" style=\"width: 25rem;\">\n" +
+                    $("#products").append("<div class=\"card \" id='p"+value['product_id']+"' style=\"width: 25rem;\">\n" +
                         "            <img class=\"card-img-top\" src=\""+value['product_picture']+"\" alt=\"Card image cap\">\n" +
                         "            <div class=\"card-body\">\n" +
                         "                <h5 class=\"card-title\">"+value['product_name']+"</h5>\n" +
@@ -118,7 +118,6 @@ else {
 			url: "ajax-deleteproduct.php",
             data: {productid:id},
             type: "GET"
-			
 		})
 		
 		.done(function(){
@@ -146,10 +145,11 @@ else {
         $(document).on('click','.edit', function(){
             name = $(this).prev().prev().text();
             cost = $(this).prev().text();
+            id = $(this).next().text();
             $("#exampleModalLongTitle").text("<?php echo $editfood?>");
             $("#modal-body").empty();
             $("#modal-body").append(
-                "        <form action='' id='editform' method=\"post\" enctype=\"multipart/form-data\">\n" +
+                "        <form action='' class='editform' id='"+id+"' method=\"post\" enctype=\"multipart/form-data\">\n" +
                 "                    <div class=\"form-row\">\n" +
                 "                        <div class=\"form-group col-md-6\">\n" +
                 "                            <label for=\"foodname\"><?php echo $foodname?></label>\n" +
@@ -174,8 +174,9 @@ else {
                 "\n"
                 )
         });
-        $(document).on('submit','editform',function (e) {
+        $(document).on('submit','.editform',function (e) {
             e.preventDefault();
+
             $.ajax({
                 url: "ajax-editproduct.php",
                 type: "POST",
@@ -185,6 +186,11 @@ else {
                 processData:false,
                 success: function(data)
                 {
+                    id=$(this).prop('id');
+                    $("#p"+id+"> img").attr('src','pics/cake.jpg');
+                    $("#p"+id+"> div > h5").text("hosein");
+                    $("#p"+id+"> div > p").text("qeymat");
+                    $("#p"+id+"> div > label").text("50000");
 
                 }
             });
