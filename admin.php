@@ -154,6 +154,7 @@ else {
                 "                        <div class=\"form-group col-md-6\">\n" +
                 "                            <label for=\"foodname\"><?php echo $foodname?></label>\n" +
                 "                            <input name=\"foodname\" type=\"text\" value='"+name+"' class=\"form-control\" id=\"foodname\" aria-describedby=\"emailHelp\" placeholder=\"<?php echo $foodname?>\">\n" +
+                "                            <input name=\"id\" type=\"text\" value='"+id+"' hidden >\n" +
                 "                        </div>\n" +
                 "                        <div class=\"form-group col-md-6\">\n" +
                 "                            <label for=\"foodcost\"><?php echo $foodcost?></label>\n" +
