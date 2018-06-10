@@ -4,6 +4,7 @@
 require_once 'connection.php';
 require_once 'model/user.php';
 require_once 'model/listrequest.php';
+require_once 'model/product.php';
 session_start();
 
 function isLogin()
@@ -135,17 +136,54 @@ function registerfood($foodname,$foodcost,$picture)
 
     $product = new product();
     $result =  $product->getProductname($foodname);
-    if (!$result)
+    if ($result)
     {
-        $newproduct = new product();
-        $newproduct->product_name = $foodname;
-        $newproduct->product_cost = $foodcost;
-        $newproduct->product_picture = $picture;
-        $newproduct->save();
-        return true;
+		$targetdir = "pics/";
+		$pict=$picture["name"];
+
+    $target_file=$targetdir.$pict;
+    //die($target_file);
+    $fileformat=pathinfo($target_file,PATHINFO_EXTENSION);
+    if($fileformat=='jpg'){
+
+        if(file_exists($target_file))
+            echo "file exit";
+        else{	
+            if(move_uploaded_file($picture["tmp_name"],$target_file))
+			{
+				echo "upload ok";
+				echo $target_file;
+			 	$newproduct =new product();
+        		$newproduct->product_name = $foodname;
+        		$newproduct->product_cost = $foodcost;
+        		$newproduct->product_picture = $target_file;
+        		$newproduct->save();
+				
+        		return true;
+			}
+            else
+			{
+				echo "upload false";
+				return false;
+			}
+                
+        }
+    }
+		else
+		{
+			echo "not jpg";
+			return false;
+
+		}
+		
+       
     }
     else
+	{
+		echo "name fod exist";
         return false;
+	}
+		
 
 
 }

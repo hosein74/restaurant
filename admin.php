@@ -45,67 +45,8 @@ else {
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script>
 
-    function pop(id) {
-        $.ajax(
-            {
-                url: "ajax-card.php",
-                data: {type:"pop",id:id},
-                type: "GET",
-            })
-            .done(function () {
-                //alert('pop');
-            })
-            .fail(function (xhr, status, errorThrown) {
-                alert( "Sorry, there was a problem!" );
-            })
-            .always(function () {
-                // alert('done');
-            })
-    }
-    function plus(id) {
-        $.ajax(
-            {
-                url: "ajax-card.php",
-                data: {type:"plus",id:id},
-                type: "GET",
-            })
-            .done(function () {
-                //alert('plus');
-            })
-            .fail(function (xhr, status, errorThrown) {
-                alert( "Sorry, there was a problem!" );
-            })
-            .always(function () {
-                // alert('done');
-            })
-    }
-    function updateText() {
-        $.ajax(
-            {
-                url: "ajax-card.php",
-                data: {type:"update"},
-                type: "GET",
-                dataType: "json",
-            })
-            .done(function (json) {
-                $('label.id').each(function () {
-                    text = $(this).text();
-
-                    //$(this).prev().removeClass('pop').addClass('plus');
-                    $(this).prev().text("<?php echo $editfood?>");
-
-
-                });
-
-
-            })
-            .fail(function (xhr, status, errorThrown) {
-                alert( "Sorry, there was a problem!" );
-            })
-            .always(function () {
-                // alert('done');
-            })
-    }
+   
+   
     function getProduct(p,c) {
         $.ajax(
             {
@@ -136,15 +77,14 @@ else {
                         "            <div class=\"card-body\">\n" +
                         "                <h5 class=\"card-title\">"+value['product_name']+"</h5>\n" +
                         "                <p class=\"card-text\">"+value['product_cost']+"</p>\n" +
-                        "                <button class=\"btn btn-primary  \" ><?php echo $editfood ?></button>\n" +
-                        "                <label name='edit' id='1' class='id' hidden for=''>"+value['product_id']+"</label>\n" +
-                        "				  <button class=\"btn btn-primary  \" ><?php echo $deletefood ?></button>\n"+
-                        "                <label name='delete' id='2' class='id' hidden for=''>"+value['product_id']+"</label>\n" +
+                        "                <button class=\"btn btn-primary edit  \" ><?php echo $editfood ?></button>\n" +
+                        "                <label  hidden for=''>"+value['product_id']+"</label>\n" +
+                        "				  <button class=\"btn btn-primary delete  \" ><?php echo $deletefood ?></button>\n"+
+                        "                <label   hidden for=''>"+value['product_id']+"</label>\n" +
                         "            </div>\n" +
                         "        </div>")
-                })
-                // updateText();
-            })
+                });
+			})
             .fail(function (xhr, status, errorThrown) {
                 alert( "Sorry, there was a problem!" );
             })
@@ -153,18 +93,42 @@ else {
             })
 
     }
+	
+	function deleteproduct(id){
+		$.ajax({
+			
+			url: "ajax-deleteproduct.php",
+            data: {productid:id},
+            type: "GET",
+			
+		})
+		
+		.done(function(){
+		//	alert(id);
+			
+			
+			
+		})
+		
+		.fail(function (xhr, status, errorThrown) {
+                alert( "Sorry, there was a problem!" );
+            })
+		
+        .always(function () {
+                // alert('done');
+            })
+			
+		
+	}//end delete food function
+	
     $(document).ready(function () {
-        $(document).on('click','.plus', function(){
+        $(document).on('click','.delete', function(){
             id = $(this).next().text();
-            plus(id);
-            $(this).removeClass('plus').addClass('pop');
-            $(this).text("<?php echo $pop?>");
+			deleteproduct(id);
         });
-        $(document).on('click','.pop', function(){
+        $(document).on('click','.edit', function(){
             id = $(this).next().text();
-            pop(id);
-            $(this).removeClass('pop').addClass('plus');
-            $(this).text("<?php echo $plus?>");
+            
         });
         getProduct(1,6);
     });

@@ -43,11 +43,11 @@ class product
         $sql->bindParam(':product_picture',$this->product_picture);
         $sql->execute();
     }
-    public function delete()
+    public function delete($product)
     {
         $conn = DB::getInstance();
         $sql = $conn->prepare("DELETE FROM `product` WHERE product_id = :product_id");
-        $sql->bindParam(':product_id',$this->product_id);
+        $sql->bindParam(':product_id',$product);
         $sql->execute();
 
     }
@@ -107,21 +107,13 @@ class product
         //$result = $sql->setFetchMode(PDO::FETCH_ASSOC);
         $ac = $sql->fetchAll();
         $numOfRow=$sql->rowCount();
-        $thisUser = $ac[1];
-        if ($numOfRow == 1)
+        if ($numOfRow == 0)
         {
-            $this->product_id = $thisUser['product_id'];
-            $this->product_name = $thisUser['product_name'];
-            $this->product_cost = $thisUser['product_cost'];
-            $this->product_picture = $thisUser['product_picture'];
+         
             return true;
         }
         else
         {
-            $this->product_id = null;
-            $this->product_name = null;
-            $this->product_cost = null;
-            $this->product_picture = null;
             return false;
         }
     }
