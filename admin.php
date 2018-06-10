@@ -174,7 +174,9 @@ else {
                 "\n"
                 )
         });
+
         $(document).on('submit','.editform',function (e) {
+
             e.preventDefault();
 
             $.ajax({
@@ -184,14 +186,14 @@ else {
                 contentType: false,
                 cache: false,
                 processData:false,
-                success: function(data)
+                dataType: "json",
+                success: function(json)
                 {
                     id=$(this).prop('id');
                     $("#p"+id+"> img").attr('src','pics/cake.jpg');
                     $("#p"+id+"> div > h5").text("hosein");
                     $("#p"+id+"> div > p").text("qeymat");
                     $("#p"+id+"> div > label").text("50000");
-
                 }
             });
         });

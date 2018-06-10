@@ -188,4 +188,15 @@ function registerfood($foodname,$foodcost,$picture)
 
 }
 
+function deletefood($id){
+	
+	$product=new product();
+	$addressfile=$product->getaddresspic($id);
+	if($addressfile){
+	
+		unlink($addressfile);
+		$product->delete($id);
+	}
+}
+
  ?>
