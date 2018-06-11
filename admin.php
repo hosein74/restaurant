@@ -190,13 +190,14 @@ else {
                 dataType: "json",
                 success: function(json)
                 {
-                    id=$(this).prop('id');
-                    $("#p"+id+"> img").attr('src','pics/cake.jpg');
-                    $("#p"+id+"> div > h5").text("hosein");
-                    $("#p"+id+"> div > p").text("qeymat");
-                    $("#p"+id+"> div > label").text("50000");
+                    id=json.id;
+                    $("#p"+id+" > img").attr('src',json.targetfile);
+                    $("#p"+id+" > div > h5").text(json.foodname);
+                    $("#p"+id+" > div > p").text(json.costname);
+
                 }
             });
+            $("#modalform").modal('hide');
         });
         getProduct(1,6);
     });

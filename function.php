@@ -256,11 +256,11 @@ function updatefood($id,$newnamefood,$newcostfood,$newpicture){
 			unlink($oldproduct->product_picture);
 			$product->update();
 			if(file_exists($targetfile)){
-				echo "file exist";
+
 			}else{
 		
 				if(move_uploaded_file($newpicture['tmp_name'],$product->product_picture)){
-					echo "uploaad ok";
+
 				}
 			}
 		}else{
