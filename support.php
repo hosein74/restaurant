@@ -37,26 +37,11 @@ if (isLogin() && $_SESSION['type'] == 1)
                 <div class="card-header">
                     <?php echo $support?>
                 </div>
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="foodname"><?php echo $foodname?></label>
-                            <input name="foodname" type="text" class="form-control" id="foodname" aria-describedby="emailHelp" placeholder="<?php echo $foodname?>">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="foodcost"><?php echo $foodcost?></label>
-                            <input name="foodcost" type="text" class="form-control" id="foodcost" aria-describedby="emailHelp" placeholder="<?php echo $foodcost?>">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="picture"><?php echo $picture?></label>
-                            <input type="file" name="picture" id="picture">
-                        </div>
-                    </div>
-                </div>
 
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary"><?php echo $registerbtn?></button>
+                    <a  class="btn btn-success" href="getsupport.php"><?php echo $getsupportdatabase?></a>
+                	<a  class="btn btn-info" href="updatesupport.php"><?php echo $updatesupportdatabase?></a>
                 </div>
 
             </div>

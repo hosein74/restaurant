@@ -39,7 +39,7 @@ require_once 'function.php';
         <?php }else if(isset($_SESSION['type']) && $_SESSION['type'] == 1){?>
 
             <div nav-item >
-               <!-- <a  class="btn btn-info" href="support.php"><?php //echo $support?></a>-->
+                <a  class="btn btn-success" href="support.php"><?php echo $support?></a>
                 <a  class="btn btn-info" href="registerfood.php"><?php echo $registerfood?></a>
                 <a  class="btn btn-success" href="verifyRequest.php"><?php echo $verify?></a>
                 <a  class="btn btn-info" href="admin.php"><?php echo $listproducts?></a>

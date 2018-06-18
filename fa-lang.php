@@ -58,3 +58,6 @@ $deletefood="حذف";
 $verify = "تایید سفارش";
 $verified = "تایید";
 $send = "ارسال";
+$getsupportdatabase="پشتیبان گیری از پایگاه داده";
+$updatesupportdatabase="بازیابی پشتیبانی پایگاه داده";
+$supportfile="لطفا فایل مورد نظر جهت پشتیبانی را وارد کنید";

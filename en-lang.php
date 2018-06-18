@@ -58,3 +58,6 @@ $deletefood="delete";
 $verify = "verify request";
 $verified = "verified";
 $send = "send";
+$getsupportdatabase="get support database";
+$updatesupportdatabase="update support database";
+$supportfile="please import support file";
